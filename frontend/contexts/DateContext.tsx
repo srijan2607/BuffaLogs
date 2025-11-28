@@ -15,10 +15,11 @@ interface DateContextProviderProps {
 
 export const DateContextProvider: React.FC<DateContextProviderProps> = ({ children }) => {
   const [date, setDate] = useState<DateRange | undefined>(() => {
-    const today = new Date();
+    // Default to March-April 2025 range to match fixture data
+    // For production, change back to: { from: addDays(new Date(), -7), to: new Date() }
     return {
-      from: addDays(today, -7),
-      to: today,
+      from: new Date(2025, 2, 1),  // March 1, 2025
+      to: new Date(2025, 4, 1),    // May 1, 2025
     };
   });
 

@@ -8,21 +8,20 @@ import { getAlerts } from "@/lib/requestdata";
 
 interface RowData {
   timestamp: string;
-  username: string;
+  triggered_by: string;
   rule_name: string;
-}
-
-interface TableComponentProps {
-  rowData: RowData[];
+  severity_type: string;
+  country: string;
 }
 
 const TableComponent: React.FC = () => {
   const { date } = useDateContext();
   const [data, setData] = useState<RowData[]>([]);
   const columnDefs: ColDef[] = [
-    { headerName: "Timestamp", field: "timestamp" },
-    { headerName: "Username", field: "username" },
-    { headerName: "Rule Name", field: "rule_name" },
+    { headerName: "Timestamp", field: "timestamp", width: 180 },
+    { headerName: "Username", field: "triggered_by", width: 150 },
+    { headerName: "Rule Name", field: "rule_name", width: 180 },
+    { headerName: "Severity", field: "severity_type", width: 100 },
   ];
 
   useEffect(() => {
