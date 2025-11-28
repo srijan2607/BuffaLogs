@@ -5,5 +5,5 @@ export const LOGOUT_URL = `${AUTH_URL}/logout`;
 export const REGISTER_URL = `${AUTH_URL}/register`;
 export const ME_URL = `${AUTH_URL}/me`;
 
-export const SESSION_TIMEOUT = Number(process.env.NEXT_PUBLIC_SESSION_TIMEOUT) || 15 * 60 * 1000;
-export const SESSION_WARNING_TIME = Number(process.env.NEXT_PUBLIC_SESSION_WARNING_TIME) || 1 * 60 * 1000;
+export const SESSION_TIMEOUT = 10000; // 10 seconds for demo
+export const SESSION_WARNING_TIME = 5000; // 5 seconds for demo

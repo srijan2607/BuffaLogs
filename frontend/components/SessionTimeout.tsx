@@ -42,16 +42,21 @@ const SessionTimeout: React.FC = () => {
 
   const checkTimeout = useCallback(() => {
     const token = getToken();
+    console.log('Checking timeout... Token exists:', !!token);
     if (!token) return; // Don't check if not logged in
 
     const now = Date.now();
     const lastActivity = getLastActivity();
     const timeSinceLastActivity = now - lastActivity;
     
+    console.log(`Time since activity: ${timeSinceLastActivity}ms. Timeout at: ${SESSION_TIMEOUT}ms. Warning at: ${SESSION_TIMEOUT - SESSION_WARNING_TIME}ms`);
+
     if (timeSinceLastActivity > SESSION_TIMEOUT) {
+      console.log('Session timed out. Logging out...');
       logout();
     } else if (timeSinceLastActivity > SESSION_TIMEOUT - SESSION_WARNING_TIME) {
       if (!isWarningOpen) {
+          console.log('Warning threshold reached. Opening modal.');
           setIsWarningOpen(true);
       }
     } else {
